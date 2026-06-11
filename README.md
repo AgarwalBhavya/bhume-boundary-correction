@@ -13,20 +13,20 @@ removes the plumbing so you start at the interesting part.
 It hands you the geospatial plumbing we are **not** assessing, so your hours go to the actual
 problem. Each piece, and why it's here:
 
-- **`load(village)`** — plots, imagery, boundary hints and example truths as one object, CRS sorted
+- **`load(village)`**- plots, imagery, boundary hints and example truths as one object, CRS sorted
   out. *Why: so you're not wiring up a GeoTIFF reader, a GeoJSON reader, and CRS handling before you
   can even look at a plot.*
-- **`patch_for_plot(src, geom)`** — the RGB pixels under a plot. *Why: cropping a georeferenced
+- **`patch_for_plot(src, geom)`** - the RGB pixels under a plot. *Why: cropping a georeferenced
   raster to a polygon (the window + affine-transform math) is fiddly and isn't what we're testing.*
-- **`lonlat_to_pixel` / `pixel_to_lonlat`** — convert between map coordinates and image pixels.
+- **`lonlat_to_pixel` / `pixel_to_lonlat`**- convert between map coordinates and image pixels.
   *Why: the plots are lon/lat (EPSG:4326) but the imagery is web-mercator (EPSG:3857); mixing them
   up silently misaligns everything, and debugging that is a time sink, not a signal.*
-- **`score(preds, village)`** — the exact accuracy + calibration + restraint metrics we grade on,
+- **`score(preds, village)`**- the exact accuracy + calibration + restraint metrics we grade on,
   run against the public example truths. *Why: a real feedback loop, you iterate against the same
   numbers we'll compute.*
-- **`write_predictions(path, gdf)`** — emit a contract-valid `predictions.geojson`. *Why: so a
+- **`write_predictions(path, gdf)`** - emit a contract-valid `predictions.geojson`. *Why: so a
   schema slip never sinks an otherwise-good submission.*
-- **`global_median_shift(village)`** — a deliberately naive baseline and a worked load→score loop.
+- **`global_median_shift(village)`** - a deliberately naive baseline and a worked load→score loop.
   *Why: a floor to beat, and ~15 lines showing the whole cycle so you start at the interesting part.*
 
 What it deliberately does **not** do: correct a plot for you. There's no align/snap/solve. The
@@ -73,7 +73,7 @@ You'll see the baseline's score, e.g.:
 
 ```
 accuracy:    median IoU pred=0.71 vs official=0.61  (improvement=+0.11, improved 1.00)
-calibration: Spearman(conf,IoU)=— · AUC=—   (flat confidence → no signal; this is the bar to clear)
+calibration: Spearman(conf,IoU)= · AUC= (flat confidence → no signal; this is the bar to clear)
 ```
 
 Then make it better. A few directions (yours to choose, ignore, or replace):
