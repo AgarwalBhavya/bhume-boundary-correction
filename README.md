@@ -56,7 +56,7 @@ Download a village bundle from the site's **Get started** page and unzip it into
 
 ```
 data/
-  34855_vadnerbhairav_chandavad_nashik/
+  village_slug/
     input.geojson         # the plots you transform (official, shifted)
     imagery.tif           # georeferenced satellite mosaic, your primary signal
     boundaries.tif        # rough, optional auto-detected field hints
@@ -66,7 +66,7 @@ data/
 ## Run the worked example
 
 ```bash
-uv run quickstart.py data/34855_vadnerbhairav_chandavad_nashik
+uv run quickstart.py data/village_slug
 ```
 
 You'll see the baseline's score, e.g.:
