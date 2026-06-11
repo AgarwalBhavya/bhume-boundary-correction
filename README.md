@@ -88,7 +88,7 @@ Then make it better. A few directions (yours to choose, ignore, or replace):
 
 `score()` mirrors the objective (L1) half of grading: IoU vs the truth, improvement over the
 official position, confidence calibration (does high confidence mean high accuracy?), and restraint
-(don't move already-correct plots). It runs over the **public example truths only** — a handful — so
+(don't move already-correct plots). It runs over the **public example truths only** - a handful- so
 treat its output as a **rough directional check, not a grade**. Calibration in particular needs more
 plots than this to mean much (and restraint shows nothing here: the public sample has no
 already-correct control plots), so reason about what your confidence *should* represent rather than
